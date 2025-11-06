@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\BelajarController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CalculatorController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [LoginController::class, 'index']);
 Route::get('login', [LoginController::class, 'index']);
@@ -23,6 +25,12 @@ Route::middleware(['auth'])->group(function(){
     // Route::put('user/update{id}', [UserController::class, 'update'])->name('user.update');
     // Route::delete('user/destroy/{id}',[UserController::class, 'destroy'])->name('user.destroy');
     Route::resource('user', UserController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('profile', ProfileController::class);
+    Route::post('change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+    
 });
 
 

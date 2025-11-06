@@ -8,7 +8,7 @@
             </div>
             <table class="table table-bordered">
                 <tr>
-                    <th>No .</th>
+                    <th>No </th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Actions</th>
@@ -20,7 +20,7 @@
                         <td>{{ $user->email }}</td>
                         <td>
                             <a href="{{ route('user.edit',$user->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="" method="post" onsubmit="return confirm('yakin ingin di delete??')" class="d-inline">
+                            <form action="{{ route('user.destroy',$user->id) }}" method="post" onsubmit="return confirm('yakin ingin di delete??')" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>

@@ -28,6 +28,6 @@
         <label for="" class="form-label">Password</label>
         <input type="password" class="form-control" name="password">
 
-        <button type="submit" name="" class="btn btn-primary mt-2">Create</button>
+        <button type="submit" name="" class="btn btn-primary mt-2">Edit</button>
     </form>
 @endsection
