@@ -4,11 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CalculatorController;
+use App\Models\Order;
 
 Route::get('/', [LoginController::class, 'index']);
 Route::get('login', [LoginController::class, 'index']);
@@ -30,6 +32,9 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('product', ProductController::class);
     Route::resource('profile', ProfileController::class);
     Route::post('change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+    Route::post('change-profile', [ProfileController::class, 'changeProfile'])->name('profile.change-profile');
+    Route::resource('order', OrderController::class);
+    Route::get('order/get-product', [ProductController::class, 'getProducts'])->name('order.get-product');
     
 });
 

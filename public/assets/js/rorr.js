@@ -24,6 +24,7 @@
 
 
 let currentCategory = "all";
+let products = [];
 function filterCategory(category, event){
     currentCategory = category;
 
@@ -40,9 +41,12 @@ function filterCategory(category, event){
   renderProduct();
 }
 
-function renderProduct(searchProduct = "") {
+async function renderProduct(searchProduct = "") {
   const productGrid = document.getElementById('productGrid');
   productGrid.innerHTML = "";
+
+  const reponse = await fetch("/order/get-products");
+  products = await Response.json();
 
   //filter
   const filtered = products.filter((p) => {
