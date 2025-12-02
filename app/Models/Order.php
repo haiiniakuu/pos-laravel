@@ -10,6 +10,7 @@ class Order extends Model
         'order_id',
         'product_id',
         'qty',
+        'order_status',
         'order_price',
         'order_subtotal'
     ];

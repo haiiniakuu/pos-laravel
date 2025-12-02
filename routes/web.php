@@ -10,7 +10,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CalculatorController;
-use App\Models\Order;
 
 Route::get('/', [LoginController::class, 'index']);
 Route::get('login', [LoginController::class, 'index']);
@@ -34,7 +33,9 @@ Route::middleware(['auth'])->group(function(){
     Route::post('change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
     Route::post('change-profile', [ProfileController::class, 'changeProfile'])->name('profile.change-profile');
     Route::resource('order', OrderController::class);
-    Route::get('order/get-product', [ProductController::class, 'getProducts'])->name('order.get-product');
+    Route::get('get-product', [OrderController::class, 'getProducts'])->name('get-product');
+
+    Route::post('cashless', [ProfileController::class, 'paymentCashless'])->name('cashless');
     
 });
 
